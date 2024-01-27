@@ -1,13 +1,15 @@
 import {connectDB} from "@/util/database";
-import Link from "next/link";
-import DetailLink from "@/app/list/DetailLink";
 import ListItem from "@/app/list/ListItem";
 
+export const dynamic = 'no-store'
 export default async function List() {
 
     const db = (await connectDB).db("board");
-    const result = await db.collection('post').find().toArray();
-
+    let result = await db.collection('post').find().toArray();
+    result = result.map((a) => {
+        a._id = a._id.toString()
+        return a
+    });
     return (
         <div className="list-bg">
             <ListItem result={result}/>

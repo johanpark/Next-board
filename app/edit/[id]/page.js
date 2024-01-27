@@ -8,7 +8,7 @@ export default async function Edit(props) {
     return (
         <div className="p-20">
             <h4>글 수정</h4>
-            <form action="/api/edit" method="POST">
+            <form action="/api/post/edit" method="POST">
                 <input type="hidden" name="id" defaultValue={result._id.toString()}/>
                 <input name="title" defaultValue={result.title}></input>
                 <input name="content" defaultValue={result.content}></input>

@@ -1,7 +1,7 @@
 export default function Join() {
     return (
         <div>
-            <form action="/api/join" method="POST">
+            <form action="/api/member/join" method="POST">
                 <input name="name" placeholder="이름"></input>
                 <input name="id"></input>
                 <input type="password" name="password"></input>
