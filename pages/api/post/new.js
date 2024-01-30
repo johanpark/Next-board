@@ -1,6 +1,12 @@
 import {connectDB} from "@/util/database";
+import {getServerSession} from "next-auth";
+import {authOptions} from "@/pages/api/auth/[...nextauth]";
 
 export default async function handler(req, res) {
+    const serverSession = await getServerSession(req, res, authOptions);
+    if(serverSession) {
+        req.body.author = serverSession.user.email;
+    }
     if (req.method === 'POST') {
         const body = req.body;
         if(body.title === '' || body.content === '') {
